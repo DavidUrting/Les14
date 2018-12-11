@@ -1,10 +1,10 @@
 ﻿@model Les14.Models.Binding.MultipleCheckboxViewModel
 
 @{
-    ViewData["Title"] = "Multiple checkbox";
+    ViewData["Title"] = "Multiple checkbox via form POST";
 }
 
-<h2>Multiple checkboxen</h2>
+<h2>Multiple checkbox via form POST</h2>
 
 <hr />
 <div class="row">
@@ -26,7 +26,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to home</a>
+    <a asp-controller="Home" asp-action="Index">Back to home</a>
 </div>
 
 @section Scripts {

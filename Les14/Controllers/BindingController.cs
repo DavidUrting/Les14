@@ -10,11 +10,38 @@ namespace Les14.Controllers
 {
     public class BindingController : Controller
     {
+        #region Multiple checkbox
         [HttpGet]
-        public IActionResult MultipleCheckbox()
+        public IActionResult MultipleCheckboxViaFormPost()
+        {
+            var model = CreateViewModelWithDummyData();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult MultipleCheckboxViaFormPost(MultipleCheckboxViewModel model)
+        {
+            var aangvinkteIds = model.Checkboxen.Where(c => c.Selected).Select(c => c.ID).ToList();
+            return Json($"Jij vinkte {string.Join(',',aangvinkteIds)} aan");
+        }
+
+        public IActionResult MultipleCheckboxViaAjaxPost()
+        {
+            var model = CreateViewModelWithDummyData();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult MultipleCheckboxViaAjaxPost(MultipleCheckboxViewModel model)
+        {
+            var aangvinkteIds = model.Checkboxen.Where(c => c.Selected).Select(c => c.ID).ToList();
+            return Json($"Jij vinkte {string.Join(',', aangvinkteIds)} aan");
+        }
+
+        private MultipleCheckboxViewModel CreateViewModelWithDummyData()
         {
             MultipleCheckboxViewModel model = new MultipleCheckboxViewModel();
-            foreach (var id in new string[] { "A", "B", "C", "D", "E"})
+            foreach (var id in new string[] { "A", "B", "C", "D", "E" })
             {
                 model.Checkboxen.Add(new MultipleCheckboxViewModel.Checkbox()
                 {
@@ -23,15 +50,8 @@ namespace Les14.Controllers
                     Text = $"Hier wat uitleg over {id}"
                 });
             }
-
-            return View(model);
+            return model;
         }
-
-        [HttpPost]
-        public IActionResult MultipleCheckbox(MultipleCheckboxViewModel model)
-        {
-            var aangvinkteIds = model.Checkboxen.Where(c => c.Selected).Select(c => c.ID).ToList();
-            return Json($"Jij vinkte {string.Join(',',aangvinkteIds)} aan");
-        }
+        #endregion
     }
 }
