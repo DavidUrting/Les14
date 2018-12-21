@@ -1,10 +1,10 @@
 ﻿@model Les14.Domain.Parent
 
 @{
-    ViewData["Title"] = "ParentChild";
+    ViewData["Title"] = "Include";
 }
 
-<h2>ParentChild</h2>
+<h2>Include</h2>
 
 <div>
     <h3>Parent @Model.Id heeft deze child records:</h3>
@@ -17,6 +17,5 @@
     </table>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-controller="Home">Back to home</a>
 </div>

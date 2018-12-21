@@ -3,14 +3,16 @@ using Les14.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Les14.Domain.Migrations
 {
     [DbContext(typeof(DemoDbContext))]
-    partial class AdventureWorksContextModelSnapshot : ModelSnapshot
+    [Migration("20181221081518_IdentityAndNoIdentityKey")]
+    partial class IdentityAndNoIdentityKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
